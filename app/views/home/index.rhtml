@@ -1,0 +1,11 @@
+<% if current_user == :false %>
+<%= link_to "Login",   {:controller => 'account', :action => 'login'}%>
+
+<%= link_to "Signup!",  {:controller => 'account', :action => 'signup'}%>
+<% else %>
+You are: <%= current_user.login %>
+
+<%= link_to "Lists", {:controller => 'lists', :action => 'index'}%>
+
+<%= link_to "Logout", {:controller => 'account', :action => 'logout'}%>
+<% end%>

@@ -1,0 +1,26 @@
+<p>
+  <b>Title:</b>
+  <%=h @list.title %>
+</p>
+<hr>
+<h4>Todos</h4>
+<ul>
+  <% @list.todos.each do |todo| %>
+
+  <li>
+    <%= h todo.body %> <%= link_to 'Destroy', list_todo_path(@list.id, todo.id), :confirm => 'Are you sure?', :method => :delete %></td>
+
+  </li>
+
+  <% end %>
+</ul>
+<% form_for(:todo, :url => list_todos_path(@list)) do |f| %>
+   <p>Todo:<br/>
+   <%= f.text_area :body%></p>
+   <%= f.submit "Create" %>
+<%end %>
+
+
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
